@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app;
+app.commandLine.appendSwitch('explicitly-allowed-ports', '6667,6697');
 const session = electron.session;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
@@ -65,7 +66,6 @@ app.on('window-all-closed', function () {
     app.quit()
   }
 })
-var fs = require('fs');
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

@@ -1,0 +1,17 @@
+{
+  "name": "KiwiIRC-Desktop",
+  "author": {
+    "name": "KiwiIRC",
+    "email": "",
+    "url": "https://github.com/kiwiirc/kiwiirc-desktop",
+    "homepage": "https://kiwiirc.com"
+  },
+  "description": "A desktop client based on the KiwiIRC web client.",
+  "version": "0.0.2",
+  "main": "main.js",
+  "dependencies": {
+    "dbus-native": "^0.2.5",
+    "irc-framework": "^2.11.0",
+    "os": "^0.1.1"
+  }
+}

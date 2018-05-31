@@ -10,6 +10,7 @@
   "version": "0.0.1",
   "main": "main.js",
   "dependencies": {
+    "dbus-native": "^0.2.5",
     "os": "^0.1.1"
   }
 }

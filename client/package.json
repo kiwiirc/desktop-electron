@@ -1,0 +1,15 @@
+{
+  "name": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "",
+    "homepage": ""
+  },
+  "description": "",
+  "version": "0.0.1",
+  "main": "main.js",
+  "dependencies": {
+    "os": "^0.1.1"
+  }
+}

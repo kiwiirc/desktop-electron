@@ -1,0 +1,30 @@
+{
+	"windowTitle": "KiwiIRC",
+	"startupScreen": "personal",
+	"kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
+	"restricted": false,
+	"warnOnExit":false,
+	"sidebarPinned": true,
+	"theme": "Default",
+	"remember_buffers":true,
+	"themes": [
+		{ "name": "Default", "url": "static/themes/default" },
+		{ "name": "Dark", "url": "static/themes/dark" }
+	],
+	"startupOptions" : {
+		"server": "irc.freenode.com",
+		"port": 6697,
+		"tls": true,
+		"direct": false,
+		"channel": "#KiwiIRC",
+		"nick": "KiwiIRC-?"
+	},
+	"embedly": {
+		"key": ""
+	},
+	"plugins": [
+		{"name": "emoji-js", "url": "plugins/emoji.js"},
+		{"name": "replace-emoji", "url": "plugins/replace-emoji.js"},
+		{"name": "sysinfo", "url": "plugins/sysinfo.js"}
+	]
+}

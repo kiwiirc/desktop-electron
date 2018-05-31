@@ -21,4 +21,4 @@ You should just need to run `./build.sh` but if that fails run the following com
     npm install
 
 # Running for development
-To run the client you will need to install electron (`sudo npm -g install electron`) then enter the `client/` directory and type `electron .`.
+To run the client you will need to install electron (`sudo npm -g install electron`) then enter the `client/` directory and type `electron .`

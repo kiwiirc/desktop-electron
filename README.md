@@ -1,11 +1,9 @@
 # Before building
 Before you can build you will need to [install yarn](https://yarnpkg.com/lang/en/docs/install/) and [nodejs](https://nodejs.org/en/download/package-manager/)
-
-# Building
-You should just need to run the following commands:
-
     git clone https://github.com/kiwiirc/kiwiirc-desktop.git
     cd kiwiirc-desktop/
+# Building
+You should just need to run `./build.sh` but if that fails run the following commands:
     git submodule init
     git submodule update
     cd ./kiwiirc/

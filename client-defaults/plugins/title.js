@@ -1,5 +1,7 @@
 kiwi.plugin('title', function(kiwi) {
-    window.kiwi.state.$on("server.tab.show", function(tabName){
-        document.title = "KiwiIRC - " + tabName;
+    kiwi.state.$watch('ui.active_buffer', function()
+    {
+        
+        document.title = "KiwiIRC - " + kiwi.state.getActiveBuffer().getNetwork().name + " - " + window.kiwi.state.getActiveBuffer().name;
     });
 });

@@ -43,22 +43,23 @@ function createWindow () {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
+/*
 mainWindow.on('close', function(e) { //   <---- Catch close event
     e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
     mainWindow.hide();
     e.preventDefault();
 });
-    
+*/  
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function (e) {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    //mainWindow = null
-    e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+    mainWindow = null
+    /*e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
     mainWindow.hide();
-    e.preventDefault();
+    e.preventDefault();*/
   })
 }
 
@@ -105,9 +106,9 @@ app.on("beforeunload", function(e) {
 app.on('window-all-closed', function (e) {
     /*mainWindow.hide();
     e.preventDefault();*/
-    //app.quit();
-    e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
-    mainWindow.hide();
+    app.quit();
+    //e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+    //mainWindow.hide();
 })
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the

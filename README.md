@@ -1,3 +1,6 @@
+# Notice
+This project is a work in progress.
+
 # Before building
 Before you can build you will need to [install yarn](https://yarnpkg.com/lang/en/docs/install/) and [nodejs](https://nodejs.org/en/download/package-manager/)
 

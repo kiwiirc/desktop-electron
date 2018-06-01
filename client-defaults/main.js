@@ -15,15 +15,7 @@ var os = require("os");
 var preventQuit = true;
 const path = require('path')
 const url = require('url')
-
-// single instance
-//var mainWindow = null;
-
-
-
-// !single instance
-
-
+const notify = require("node-notifier");
 
 var yummy_cookies ={};
 
@@ -144,3 +136,7 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 // 
+notify.notify({
+  title: "KiwiIRC",
+  message: "KiwiIRC is ready to use!"
+});

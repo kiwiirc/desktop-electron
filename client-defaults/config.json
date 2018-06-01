@@ -29,7 +29,6 @@
 		{"name": "emoji-js", "url": "plugins/emoji.js"},
 		{"name": "replace-emoji", "url": "plugins/replace-emoji.js"},
 		{"name": "sysinfo", "url": "plugins/sysinfo.js"},
-		{"name": "nativesocks", "url": "plugins/nativesocks.js"},
-		{"name": "youtube-embed", "url": "plugins/youtube-embed.js"}
+		{"name": "nativesocks", "url": "plugins/nativesocks.js"}
 	]
 }

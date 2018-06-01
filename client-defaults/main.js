@@ -67,7 +67,7 @@ mainWindow.on('close', function(e) { //   <---- Catch close event
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function(){
-  tray = new Tray('kiwiirclogo.png')
+  tray = new Tray(path.join(__dirname, 'kiwiirclogo.png'))
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Quit',

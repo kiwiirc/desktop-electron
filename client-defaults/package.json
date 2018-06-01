@@ -7,7 +7,7 @@
     "homepage": "https://kiwiirc.com"
   },
   "description": "A desktop client based on the KiwiIRC web client.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "main.js",
   "dependencies": {
     "irc-framework": "^2.11.0",

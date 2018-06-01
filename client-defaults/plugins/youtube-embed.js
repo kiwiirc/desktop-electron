@@ -9,7 +9,7 @@ kiwi.plugin('youtube-embed', function(kiwi) {
             }
             var matches = item.match(/(\?|\&)v\=([a-zA-Z0-9\-\_]+)/i);
             var watchID = matches[2];
-            event.message.html = '<div style="overflow:hidden;padding-bottom:56.25%;position:relative;height:0;"><iframe style="left:0;top:0;height:100%;width:100%;position:absolute;" src="https://www.youtube.com/embed/'+watchID+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+            event.message.html = event.message.message + '<br /><div style="overflow:hidden;padding-bottom:56.25%;position:relative;height:0;"><iframe style="left:0;top:0;height:100%;width:100%;position:absolute;" src="https://www.youtube.com/embed/'+watchID+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
         });
     });
 });

@@ -6,6 +6,8 @@ const session = electron.session;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain;
+var openUrl = require("openurl");
+var os = require("os");
 
 const path = require('path')
 const url = require('url')
@@ -18,7 +20,11 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1280, height: 720, icon: path.join(__dirname, 'icon.png')})
+  mainWindow = new BrowserWindow({
+    width: 1280,
+    height: 720,
+    icon: path.join(__dirname, 'kiwiirclogo.png'),
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -26,6 +32,11 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  mainWindow.webContents.on('new-window', function(event, url){
+    console.log("Link: " + url + " has been clicked. Detected platform: " + os.platform);
+    openUrl.open(url);
+    event.preventDefault();
+  });
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -60,11 +71,7 @@ app.on('ready', function(){
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+    app.quit();
 })
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the

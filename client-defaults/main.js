@@ -1,6 +1,8 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app;
+const Tray = electron.Tray;
+const Menu = electron.Menu;
 app.commandLine.appendSwitch('explicitly-allowed-ports', '6667,6697');
 const session = electron.session;
 // Module to create native browser window.
@@ -41,12 +43,22 @@ function createWindow () {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
+mainWindow.on('close', function(e) { //   <---- Catch close event
+    e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+    mainWindow.hide();
+    e.preventDefault();
+});
+    
+
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', function (e) {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
+    //mainWindow = null
+    e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+    mainWindow.hide();
+    e.preventDefault();
   })
 }
 
@@ -54,24 +66,48 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function(){
+  tray = new Tray('kiwiirclogo.png')
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Quit',
+      type: 'radio',
+      click:function(){ app.quit(); }
+    },
+    {
+      label: 'Show/Hide Window',
+      type: 'radio',
+      click: function(){ mainWindow.hide(); }
+    }
+  ]);
+  tray.on('click', () => {
+    mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
+  })
+  /*
+  mainWindow.on('show', () => {
+    tray.setHighlightMode('always')
+  })
+  mainWindow.on('hide', () => {
+    tray.setHighlightMode('never')
+  })
+  */
+  tray.setToolTip('KiwiIRC')
+  tray.setContextMenu(contextMenu)
   createWindow();
-  /*setInterval(function(){
-    session.defaultSession.cookies.get({}, (error, cookies) => {
-      console.log(cookies);
-      yummy_cookies=cookies;
-      fs.writeFile("./cookies.dat", JSON.stringify(cookies), function(err) {
-        if(err) {
-            return console.log(err);
-        }
-      });
-    });
-
-  }, 5000);*/
 });
 
+/*
+app.on("beforeunload", function(e) {
+  e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+  mainWindow.hide();
+});
+*/
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
-    app.quit();
+app.on('window-all-closed', function (e) {
+    /*mainWindow.hide();
+    e.preventDefault();*/
+    //app.quit();
+    e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+    mainWindow.hide();
 })
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
@@ -85,3 +121,12 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 // 
 
+/*
+mainWindow.on(BeforeUnloadEvent) = (e) => {
+  e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
+
+  if(confirm('Do you really want to close the application?')) { 
+    mainWindow.destroy();  // this will bypass onbeforeunload and close the app
+  }  
+};
+*/

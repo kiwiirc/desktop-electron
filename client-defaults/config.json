@@ -30,7 +30,6 @@
 		{"name": "replace-emoji", "url": "plugins/replace-emoji.js"},
 		{"name": "sysinfo", "url": "plugins/sysinfo.js"},
 		{"name": "nativesocks", "url": "plugins/nativesocks.js"},
-		{"name": "native-notifications", "url":"plugins/native-notifications.js"},
 		{"name": "title", "url":"plugins/title.js"}
 	]
 }

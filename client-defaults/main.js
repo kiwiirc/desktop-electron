@@ -22,6 +22,9 @@ var yummy_cookies ={};
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+/* requestSingleInstanceLock should be used instead... :)
+
 var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
   // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
@@ -34,13 +37,19 @@ if (shouldQuit) {
   app.quit();
   return;
 }
+*/
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
-    icon: path.join(__dirname, 'kiwiirclogo.png'),
+    icon: path.join(__dirname, 'icons/kiwiirclogo_512x512.png'),
+    requestSingleInstanceLock: true,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
+    }
   })
 
   // and load the index.html of the app.
@@ -101,7 +110,7 @@ mainWindow.on('close', function(e) { //   <---- Catch close event
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function(){
-  tray = new Tray(path.join(__dirname, 'kiwiirclogo.png'))
+  tray = new Tray(path.join(__dirname, '/icons/kiwiirclogo_512x512.png'))
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Quit',

@@ -11,6 +11,7 @@ cp client-defaults/config.json client/static/config.json
 cp client-defaults/package.json client/package.json
 cp client-defaults/main.js client/main.js
 cp client-defaults/kiwiirclogo.png client/kiwiirclogo.png
+cp -r icons/ client/icons
 cp -r client-defaults/plugins client/plugins
 cd client/
 npm install

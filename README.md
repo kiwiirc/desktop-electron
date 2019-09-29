@@ -6,6 +6,7 @@ Before you can build you will need to [install yarn](https://yarnpkg.com/lang/en
 
     git clone https://github.com/kiwiirc/kiwiirc-desktop.git
     cd kiwiirc-desktop/
+    chmod +x build.sh
 
 # Building
 You should just need to run `./build.sh` but if that fails run the following commands:

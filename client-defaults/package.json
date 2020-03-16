@@ -10,7 +10,7 @@
   "version": "0.0.6",
   "main": "main.js",
   "dependencies": {
-    "irc-framework": "^2.11.0",
+    "irc-framework": "^4.5.2",
     "os": "^0.1.1",
     "openurl":"^1.1.1",
     "node-notifier":"^5.2.1",

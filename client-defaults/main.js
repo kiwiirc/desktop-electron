@@ -84,11 +84,6 @@ mainWindow.on('close', function(e) { //   <---- Catch close event
               app.quit();
           }
       })
-  } 
-  if(preventQuit == true)
-  {
-    mainWindow.hide();
-    e.preventDefault();
   }
 });
 
@@ -98,8 +93,8 @@ mainWindow.on('close', function(e) { //   <---- Catch close event
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
     app.quit();
+    mainWindow = null
     /*e.returnValue = false;  // this will *prevent* the closing no matter what value is passed
     mainWindow.hide();
     e.preventDefault();*/

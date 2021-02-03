@@ -124,7 +124,7 @@ app.on('ready', function(){
   tray.on('click', () => {
     mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
   })
-
+  Menu.setApplicationMenu(null)
   tray.setToolTip('KiwiIRC')
   tray.setContextMenu(contextMenu)
   createWindow();

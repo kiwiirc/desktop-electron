@@ -12,7 +12,7 @@ const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain;
 var openUrl = require("openurl");
 var os = require("os");
-var preventQuit = true;
+var preventQuit = false;
 const path = require('path')
 const url = require('url')
 const notify = require("node-notifier");
@@ -68,29 +68,37 @@ function createWindow () {
   // mainWindow.webContents.openDevTools()
 
 
-mainWindow.on('close', function(e) { //   <---- Catch close event
-  if (app.showExitPrompt && preventQuit == false) {
-      e.preventDefault() // Prevents the window from closing 
-      dialog.showMessageBox({
-          type: 'question',
-          buttons: ['Yes', 'No'],
+  mainWindow.on('close', function(e) { //   <---- Catch close event
+    //e.preventDefault();
+    if (app.showExitPrompt && preventQuit == false) {
+      e.preventDefault();
+      dialog.showMessageBox(
+        {
           title: 'Confirm',
-          message: 'You will be disconnected from all of your networks and channels, are you sure that you would like to exit KiwiIRC?'
-      }, function (response) {
-          if (response === 0) { // Runs the following if 'Yes' is clicked
-              preventQuit=false;
-              app.showExitPrompt = false
-              mainWindow.close()
-              app.quit();
+          message: 'You will be disconnected from all of your networks and channels, are you sure that you would like to exit KiwiIRC?',
+          buttons: ['Yes', "No"],
+          defaultId: 0, // bound to buttons array
+          cancelId: 1 // bound to buttons array
+        })
+        .then(result => {
+          if (result.response === 0) {
+            preventQuit=false;
+            app.showExitPrompt = false;
+            mainWindow.close();
+            app.quit();
+          } else if (result.response === 1) {
+            e.preventDefault();
           }
-      })
-  } 
-  if(preventQuit == true)
-  {
-    mainWindow.hide();
-    e.preventDefault();
-  }
-});
+        }
+      );
+    }
+
+    if(preventQuit == true)
+    {
+      mainWindow.hide();
+      e.preventDefault();
+    }
+  });
 
 
   // Emitted when the window is closed.
@@ -144,7 +152,7 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-// 
+//
 notify.notify({
   title: "KiwiIRC",
   message: "KiwiIRC is ready to use!"

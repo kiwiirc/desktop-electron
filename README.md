@@ -20,6 +20,7 @@ You should just need to run `./build.sh` but if that fails run the following com
     cp client-defaults/package.json client/package.json
     cp client-defaults/main.js client/main.js
     cp -r client-defaults/plugins client/plugins
+    cp -r icons/ client/
     cd client/
     npm install
 
